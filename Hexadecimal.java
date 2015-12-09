@@ -153,7 +153,9 @@ public class Hexadecimal {
 		Object), or if this and other represent equal hexary values
 	=============================================*/
 	public boolean equals( Object other ) { 
-	
+	if(other == null)
+    		throw new nullPointerException("equals() input null");	
+		
 	//First, check for aliasing
 	if (this == other)
 	    return true;
@@ -178,6 +180,12 @@ public class Hexadecimal {
 		negative integer if this<input, positive integer otherwise
 	=============================================*/
 	public int compareTo( Object other ) {
+		
+		if(other == null)
+    			throw new nullPointerException("compareTo() input null");
+    			
+    		if(!(other instanceof Hexadecimal))
+    			throw new classCastException("compareTo() input not a Binary");	
 		
 	if (_decNum > ((Hexadecimal)other)._decNum)
 	    return 1;
