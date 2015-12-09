@@ -1,3 +1,3 @@
-public class Compareable{
+public interface Compareable{
   public int compareTo(object o);
 }
