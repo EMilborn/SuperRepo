@@ -5,7 +5,7 @@
 
 //skeleton file for class Hexadecimal
 
-public class Hexadecimal {
+public class Hexadecimal extends Compareable{
 	
     private int _decNum;
     private String _hexNum;
