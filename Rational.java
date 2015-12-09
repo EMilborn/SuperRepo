@@ -125,6 +125,26 @@ public class Rational implements Comparable {
         }
     }
     
+    public boolean equals( Object other ) { 
+	if(other == null)
+    		throw new nullPointerException("equals() input null");
+	
+	//First, check for aliasing
+	if (this == other)
+	    return true;
+	
+	//Next, check if this input and Object are differnet objects
+	if  (!(other instanceof Rational))
+	    return false;
+	
+	//Last, check if they are equal in Value
+	if (compareTo(other) == 0)
+	    return true;
+
+	//Otherwise must be false
+	return false;
+    }
+    
     public static void main(String[] args) {
         Rational r = new Rational(2,3); //Stores the rational number 2/3
         Rational s = new Rational(1,2); //Stores the rational number 1/2
