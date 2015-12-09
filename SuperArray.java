@@ -23,7 +23,7 @@ public class SuperArray{
  
     //~~~~~INSTANCE VARS~~~~~
     //underlying container, or "core" of this data structure:
-    private int[] _data;
+    private Compareable[] _data;
 
     //position of last meaningful value
     private int _lastPos;
@@ -36,7 +36,7 @@ public class SuperArray{
     //default constructor â€“ initializes 10-item array
     public SuperArray() 
     { 
-	_data = new int[10];
+	_data = new Compareable[10];
 	_lastPos = -1; //flag to indicate no lastpos yet
 	_size = 0;	
     }
@@ -44,8 +44,7 @@ public class SuperArray{
 		
     //output array in [a,b,c] format, eg
     // {1,2,3}.toString() -> "[1,2,3]"
-    public String toString() 
-    { 
+    public String toString() { 
 	String foo = "[";
 	for( int i = 0; i < _size; i++ ) {
 	    foo += _data[i] + ",";
@@ -57,11 +56,11 @@ public class SuperArray{
 	return foo;
     }
 
-		
+
     //double capacity of this SuperArray
     private void expand() 
     { 
-	int[] temp = new int[ _data.length * 2 ];
+	Compareable[] temp = new Compareable[ _data.length * 2 ];
 	for( int i = 0; i < _data.length; i++ )
 	    temp[i] = _data[i];
 	_data = temp;
@@ -74,9 +73,9 @@ public class SuperArray{
 		
     //mutator -- set value at index to newVal, 
     //           return old value at index
-    public int set( int index, int newVal ) 
+    public Compareable set( int index, int newVal ) 
     { 
- 	int temp = _data[index];
+ 	Compareable temp = _data[index];
 	_data[index] = newVal;
 	return temp;
     }
@@ -85,7 +84,7 @@ public class SuperArray{
     // ~~~~~~~~~~~~~~ PHASE II ~~~~~~~~~~~~~~
     //adds an item after the last item
     public void add( int newVal ) {
-        add(_size,newVal);
+        add(_size, newVal);
     }
 
 
@@ -132,72 +131,6 @@ public class SuperArray{
     //main method for testing
     public static void main( String[] args ) {
     	SuperArray curtis = new SuperArray();
-    	System.out.println("Printing empty SuperArray curtis...");
-    	System.out.println(curtis);
-    
-    	for( int i = 0; i < curtis._data.length; i++ ) {
-    	    curtis.set(i,i*2);
-    	    curtis._size++; //necessary bc no add() method yet
-    	}
-    
-    	System.out.println("Printing populated SuperArray curtis...");
-    	System.out.println(curtis);
-    
-    	System.out.println("testing get()...");
-    	for( int i = 0; i < curtis._size; i++ ) {
-    	    System.out.print( "item at index" + i + ":\t" );
-    	    System.out.println( curtis.get(i) );
-    	}
-    
-    	System.out.println("Expanded SuperArray curtis:");
-    	curtis.expand();
-    	System.out.println(curtis);
-    
-    	SuperArray mayfield = new SuperArray();
-    	System.out.println("Printing empty SuperArray mayfield...");
-    	System.out.println(mayfield);
-
-	    mayfield.add(5);
-	    mayfield.add(4);
-	    mayfield.add(3);
-	    mayfield.add(2);
-	    mayfield.add(1);
-
-	    System.out.println("Printing populated SuperArray mayfield...");
-	    System.out.println(mayfield);
-
-	    mayfield.remove(3);
-	    System.out.println("Printing SuperArray mayfield post-remove...");
-	    System.out.println(mayfield);
-	    mayfield.remove(3);
-	    System.out.println("Printing SuperArray mayfield post-remove...");
-	    System.out.println(mayfield);
-
-	    mayfield.add(3,99);
-	    System.out.println("Printing SuperArray mayfield post-insert...");
-	    System.out.println(mayfield);
-	    mayfield.add(2,88);
-	    System.out.println("Printing SuperArray mayfield post-insert...");
-	    System.out.println(mayfield);
-	    mayfield.add(1,77);
-	    System.out.println("Printing SuperArray mayfield post-insert...");
-	    System.out.println(mayfield);
-	    
-	    
-	    // Testing ListInt
-	    ListInt david_baguetta = new SuperArray();
-	    System.out.println("\nPrinting empty david_baguetta");
-	    System.out.println(david_baguetta);
-	    
-	    david_baguetta.add(1);
-	    david_baguetta.add(3);
-	    david_baguetta.add(3);
-	    david_baguetta.add(7);
-	    System.out.println("Printing populated david_baguetta");
-	    System.out.println(david_baguetta);
-	    
-	    
-
     }//end main
 		
 }//end class
