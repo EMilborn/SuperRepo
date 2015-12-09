@@ -126,6 +126,29 @@ public class SuperArray{
     public int size() { 
         return _size;
     }
+    
+    
+    public int linSearch(Compareable c){
+    	int retInt = -1;//default return statement if Compareable c is not found
+    	
+    	for(int i=0; i<=_lastPos && retInt == -1; i++){//will stop once it has searched meaningul values or c has already been found
+    		if _data[i].equals(c)
+    			retInt = i;
+    	}
+    	
+    	return retInt;
+    }
+    
+    public boolean isSorted(){
+    	boolean retBool = true;
+    	
+    	for (int i=0; i < _lastPos && retBool; i++){//stops as soon as it sees that the array is unsorted
+    		if (_data[i].compareTo(_data[i+1]) == -1)
+    			retBool=false;
+    	}
+    	
+    	return retBool;
+    }
 
 
     //main method for testing
