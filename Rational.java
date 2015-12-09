@@ -107,6 +107,12 @@ public class Rational implements Comparable {
     }
     
     public int compareTo(Object o) {
+        if(other == null)
+    			throw new nullPointerException("compareTo() input null");
+    			
+    		if(!(other instanceof Hexadecimal))
+    			throw new classCastException("compareTo() input not a Binary");	
+        
         Rational temp = new Rational(getNum(),getDen());
         temp.subtract((Rational)o);
         
