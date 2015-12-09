@@ -1,3 +1,4 @@
 public interface Compareable{
-  public int compareTo(object o);
+  int compareTo(object o);
+  boolean equals(object o);
 }
