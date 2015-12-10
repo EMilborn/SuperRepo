@@ -144,8 +144,8 @@ public class Binary implements Compareable{
       Object), or if this and other represent equal binary values
       =============================================*/
     public boolean equals( Object other ) { 
-	if(other == null)
-    		throw new nullPointerException("equals() input null");
+	if(other.equals(null))
+    		throw new NullPointerException("equals() input null");
 	
 	//First, check for aliasing
 	if (this == other)
@@ -171,10 +171,10 @@ public class Binary implements Compareable{
       negative integer if this<input, positive integer otherwise
       =============================================*/
     public int compareTo( Object other ) {
-    	if(other == null)
-    		throw new nullPointerException("compareTo() input null");
+    	if(other.equals(null))
+    		throw new NullPointerException("compareTo() input null");
     	if(!(other instanceof Binary))
-    		throw new classCastException("compareTo() input not a Binary");
+    		throw new ClassCastException("compareTo() input not a Binary");
 	if (_decNum > ((Binary)other)._decNum)
 	    return 1;
 	    
