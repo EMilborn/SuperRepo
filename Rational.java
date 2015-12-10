@@ -36,7 +36,7 @@ public class Rational implements Comparable {
         return _den;
     }
     // ============================    
-
+    
     public String toString() {
         return _num + "/" + _den; //return "_num/_den" representation
     }
@@ -45,22 +45,22 @@ public class Rational implements Comparable {
         return (double)_num / _den; //return the quotient of _num and _den as a double
     }
     
-        public static int gcdEW(int a, int b){
-        	if (a==0){
-        	    return b;}
-        	if (b==0){
-        	    return a;}
-        	while (a != b){
-        	    if (a > b){
-        		a -= b;
-        	    }
-        	    else{
-        		b -= a;
-        	    }
-        	}
-        	return a;
+    public static int gcdEW(int a, int b){
+	if (a==0){
+	    return b;}
+	if (b==0){
+	    return a;}
+	while (a != b){
+	    if (a > b){
+		a -= b;
+	    }
+	    else{
+		b -= a;
+	    }
+	}
+	return a;
     }
-
+    
     public int gcd(){
         return gcdEW(_num, _den);
     }
@@ -106,15 +106,15 @@ public class Rational implements Comparable {
         }
     }
     
-    public int compareTo(Object o) {
+    public int compareTo(Object other) {
         if(other == null)
-    			throw new nullPointerException("compareTo() input null");
+	    throw new NullPointerException("compareTo() input null");
     			
-    		if(!(other instanceof Hexadecimal))
-    			throw new classCastException("compareTo() input not a Binary");	
+	if(!(other instanceof Hexadecimal))
+	    throw new ClassCastException("compareTo() input not a Binary");	
         
         Rational temp = new Rational(getNum(),getDen());
-        temp.subtract((Rational)o);
+        temp.subtract((Rational)other);
         
         if (temp._num > 0) {
             return 1;
@@ -126,8 +126,8 @@ public class Rational implements Comparable {
     }
     
     public boolean equals( Object other ) { 
-	if(other == null)
-    		throw new nullPointerException("equals() input null");
+	if(other.equals (null))
+	    throw new NullPointerException("equals() input null");
 	
 	//First, check for aliasing
 	if (this == other)
@@ -140,7 +140,7 @@ public class Rational implements Comparable {
 	//Last, check if they are equal in Value
 	if (compareTo(other) == 0)
 	    return true;
-
+	
 	//Otherwise must be false
 	return false;
     }
@@ -168,7 +168,7 @@ public class Rational implements Comparable {
         System.out.println(s.compareTo(r) + ": should be -1");
         System.out.println(t.compareTo(t) + ": should be 0");
         
-
+	
     }    
     
     
