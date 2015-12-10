@@ -1,4 +1,3 @@
-
 /*****************************
  * Team 5MinHW - Elias "RzrWire" Milborn, William "Dub X" Xiang
  * APCS1 pd10
@@ -131,7 +130,7 @@ public class SuperArray{
     public int linSearch(Compareable c){
     	int retInt = -1;//default return statement if Compareable c is not found
     	
-    	for(int i=0; i<=_lastPos && retInt == -1; i++){//will stop once it has searched meaningul values or c has already been found
+    	for(int i = 0; i <= _lastPos && retInt == -1; i++){//will stop once it has searched meaningul values or c has already been found
 	    if (_data[i].equals(c))
     			retInt = i;
     	}
@@ -142,9 +141,9 @@ public class SuperArray{
     public boolean isSorted(){
     	boolean retBool = true;
     	
-    	for (int i=0; i < _lastPos && retBool; i++){//stops as soon as it sees that the array is unsorted
-    		if (_data[i].compareTo(_data[i+1]) == -1)
-    			retBool=false;
+    	for (int i=0; (i < _lastPos) && (retBool); i++){//stops as soon as it sees that the array is unsorted
+	    if (_data[i].compareTo(_data[i+1]) == 1)
+		retBool=false;
     	}
     	
     	return retBool;
@@ -153,7 +152,43 @@ public class SuperArray{
 
     //main method for testing
     public static void main( String[] args ) {
-    	SuperArray curtis = new SuperArray();
+	Compareable mal = new Binary(36);
+	Compareable jayne = new Binary(37);
+	Compareable inara = new Binary(2);
+	Compareable river = new Hexadecimal(38);
+	Compareable kaylee = new Rational(1, 3);
+	Compareable book = new Rational(1, 2);
+	Compareable simon = new Rational(2, 3);
+
+    	SuperArray serenity1 = new SuperArray();
+	//will be unordered SuperArray of all Binaries
+	serenity1.add(mal);
+	serenity1.add(jayne);
+	serenity1.add(inara);
+
+	SuperArray serenity2 = new SuperArray();
+	//ordered SuperArray of different compareables
+	serenity2.add(kaylee);
+	serenity2.add(inara);
+	serenity2.add(river);
+
+	SuperArray serenity3 = new SuperArray();
+	//ordered SuperArray of all Rationals
+	serenity3.add(kaylee);
+	serenity3.add(book);
+	serenity3.add(simon);
+
+	int test1 = serenity2.linSearch(simon);//should be -1
+	int test2 = serenity2.linSearch(river);//should be 2
+	boolean test3 = serenity1.isSorted();//should be false
+	boolean test4 = serenity3.isSorted();//should be true
+
+	System.out.println(serenity2);
+	System.out.println(test1);
+	System.out.println(test2);
+	System.out.println(test3);
+	System.out.println(test4);
+	System.out.println(serenity2.isSorted());//intended to cause error
     }//end main
 		
 }//end class
