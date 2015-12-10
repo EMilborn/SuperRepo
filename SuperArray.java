@@ -68,12 +68,12 @@ public class SuperArray{
 
 		
     //accessor -- return value at specified index
-    public int get( int index ) { return _data[index]; }
+    public Compareable get( int index ) { return _data[index]; }
 
 		
     //mutator -- set value at index to newVal, 
     //           return old value at index
-    public Compareable set( int index, int newVal ) 
+    public Compareable set( int index, Compareable newVal ) 
     { 
  	Compareable temp = _data[index];
 	_data[index] = newVal;
@@ -83,14 +83,14 @@ public class SuperArray{
 
     // ~~~~~~~~~~~~~~ PHASE II ~~~~~~~~~~~~~~
     //adds an item after the last item
-    public void add( int newVal ) {
+    public void add( Compareable newVal ) {
         add(_size, newVal);
     }
 
 
     //inserts an item at index
     //shifts existing elements to the right
-    public void add( int index, int newVal ) {
+    public void add( int index, Compareable newVal ) {
         if (index <= _size && index >= 0){
             _size += 1;
             _lastPos += 1;
@@ -132,7 +132,7 @@ public class SuperArray{
     	int retInt = -1;//default return statement if Compareable c is not found
     	
     	for(int i=0; i<=_lastPos && retInt == -1; i++){//will stop once it has searched meaningul values or c has already been found
-    		if _data[i].equals(c)
+	    if (_data[i].equals(c))
     			retInt = i;
     	}
     	
