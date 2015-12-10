@@ -5,11 +5,11 @@
 
 //skeleton file for class Hexadecimal
 
-public class Hexadecimal extends Compareable{
+public class Hexadecimal implements Compareable{
 	
     private int _decNum;
     private String _hexNum;
-	private final static String HEXDIGITS = "0123456789ABCDEF"; 
+    private final static String HEXDIGITS = "0123456789ABCDEF"; 
 	
     /*=====================================
 		default constructor
@@ -137,100 +137,3 @@ public class Hexadecimal extends Compareable{
 	=====================================*/
 	
 	public static int hexToDecR( String s ) { 
-		if (s.length() == 0)//base case
-			return 0;
-		return (int)((HEXDIGITS.indexOf(s.substring(0,1)))*(Math.pow(16, (s.length()-1)))) + hexToDecR(s.substring(1));
-		//to convert from hex to dec this method multipies the first digit by 16 raised to the necessary power(length-1) 
-		//and then adds that quantity to the decimal version of the everything but the first digit
-    }
-    
-	
-	
-	/*=============================================
-		boolean equals(Object) -- tells whether 2 Objs are equivalent
-		pre:  other is an instance of class Hexadecimal
-		post: Returns true if this and other are aliases (pointers to same 
-		Object), or if this and other represent equal hexary values
-	=============================================*/
-	public boolean equals( Object other ) { 
-	if(other == null)
-    		throw new nullPointerException("equals() input null");	
-		
-	//First, check for aliasing
-	if (this == other)
-	    return true;
-	
-	//Next, check if this input and Object are differnet objects
-	if  (!(other instanceof Hexadecimal))
-	    return false;
-	
-	//Last, check if they are equal in Value
-	if (compareTo(other) == 0)
-	    return true;
-
-	//Otherwise must be false
-	return false;
-    }
-	
-	
-	/*=============================================
-		int compareTo(Object) -- tells which of two Hexadecimal objects is greater
-		pre:  other is instance of class Hexadecimal
-		post: Returns 0 if this Object is equal to the input Object,
-		negative integer if this<input, positive integer otherwise
-	=============================================*/
-	public int compareTo( Object other ) {
-		
-		if(other == null)
-    			throw new nullPointerException("compareTo() input null");
-    			
-    		if(!(other instanceof Hexadecimal))
-    			throw new classCastException("compareTo() input not a Binary");	
-		
-	if (_decNum > ((Hexadecimal)other)._decNum)
-	    return 1;
-	    
-	if (_decNum == ((Hexadecimal)other)._decNum)
-	    return 0;
-	    
-	return -1;
-    }
-	
-	
-	//main method for testing
-	public static void main( String[] args ) {
-		
-			System.out.println();
-			System.out.println( "Testing ..." );
-			
-			Hexadecimal b1 = new Hexadecimal(46);
-			Hexadecimal b2 = new Hexadecimal("2E");
-			Hexadecimal b3 = b1;
-			Hexadecimal b4 = new Hexadecimal(27);
-			
-			System.out.println( b1 );
-			System.out.println( b2 );
-			System.out.println( b3 );       
-			System.out.println( b4 );       
-			
-			System.out.println( "\n==..." );
-			System.out.println( b1 == b2 ); //should be false
-			System.out.println( b1 == b3 ); //should be true
-			
-			System.out.println( "\n.equals()..." );
-			System.out.println( b1.equals(b2) ); //should be true
-			System.out.println( b1.equals(b3) ); //should be true
-			System.out.println( b3.equals(b1) ); //should be true
-			System.out.println( b4.equals(b2) ); //should be false
-			System.out.println( b1.equals(b4) ); //should be false
-
-			System.out.println( "\n.compareTo..." );
-			System.out.println( b1.compareTo(b2) ); //should be 0
-			System.out.println( b1.compareTo(b3) ); //should be 0
-			System.out.println( b1.compareTo(b4) ); //should be pos
-			System.out.println( b4.compareTo(b1) ); //should be neg
-			/*=========================================
-		=========================================*/
-	}//end main()
-	
-} //end class
