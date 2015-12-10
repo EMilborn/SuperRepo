@@ -3,7 +3,7 @@
 // HW 41 -- In America, the Driver Sits on the Left
 // 2015-11-19
 
-public class Rational implements Comparable {
+public class Rational implements Compareable {
     private int _num, _den; //declare instance vars for numerator and denominator
     
     public Rational() {
@@ -107,10 +107,10 @@ public class Rational implements Comparable {
     }
     
     public int compareTo(Object other) {
-        if(other == null)
+        if(other.equals(null))
 	    throw new NullPointerException("compareTo() input null");
     			
-	if(!(other instanceof Hexadecimal))
+	if(!(other instanceof Rational))
 	    throw new ClassCastException("compareTo() input not a Binary");	
         
         Rational temp = new Rational(getNum(),getDen());
@@ -126,9 +126,7 @@ public class Rational implements Comparable {
     }
     
     public boolean equals( Object other ) { 
-	if(other.equals (null))
-	    throw new NullPointerException("equals() input null");
-	
+
 	//First, check for aliasing
 	if (this == other)
 	    return true;
