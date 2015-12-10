@@ -144,9 +144,7 @@ public class Binary implements Compareable{
       Object), or if this and other represent equal binary values
       =============================================*/
     public boolean equals( Object other ) { 
-	if(other.equals(null))
-    		throw new NullPointerException("equals() input null");
-	
+
 	//First, check for aliasing
 	if (this == other)
 	    return true;
